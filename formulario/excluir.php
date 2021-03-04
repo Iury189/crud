@@ -15,12 +15,8 @@
                         
             $aluno->setAluno($cd_aluno);
                         
-            if ($aluno->Delete()) {
-               header('Location: ../formulario/index.php');   
-            } else {
-                echo "Erro!";
-                echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
-        	} 
+            if ($aluno->Delete() ? header('Location: ../formulario/index.php') : '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>');
+
         } else {
             echo "Erro, refaça a operação";
             echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
