@@ -19,7 +19,12 @@
             $aluno->setNome($nome);
             $aluno->setEndereco($endereco);
                         
-            if ($aluno->Update() ? header('Location: ../formulario/index.php') : '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>');
+            if ($aluno->Update()) {
+            	header('Location: ../formulario/index.php');
+            } else {
+            	echo "Erro.";
+            	echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
+            }
 
         } else {
             echo "Erro, refaça a operação";
