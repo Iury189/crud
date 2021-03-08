@@ -11,7 +11,7 @@
 
         if (isset($_POST['Excluir'])) {
                         
-            $cd_aluno = intval($_POST['cd_aluno']);
+            $cd_aluno = filter_input(INPUT_POST, 'cd_aluno', FILTER_SANITIZE_NUMBER_INT);
                         
             $aluno->setAluno($cd_aluno);
                         

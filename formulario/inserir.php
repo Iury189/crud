@@ -11,8 +11,8 @@
 
         if (isset($_POST['Cadastrar'])) {
                         
-            $nome = strval($_POST['nome']);
-            $endereco = strval($_POST['endereco']);
+            $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+            $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
                         
             $aluno->setNome($nome);
             $aluno->setEndereco($endereco);

@@ -11,9 +11,9 @@
 
         if (isset($_POST['Atualizar'])) {
             
-            $cd_aluno = intval($_POST['cd_aluno']);           
-            $nome = strval($_POST['nome']);
-            $endereco = strval($_POST['endereco']);
+            $cd_aluno = filter_input(INPUT_POST, 'cd_aluno', FILTER_SANITIZE_NUMBER_INT);        
+            $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+            $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
             
             $aluno->setAluno($cd_aluno);            
             $aluno->setNome($nome);
