@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
 	<title> DELETE | POO </title>
 </head>
 <body>
@@ -12,20 +11,27 @@
 
         if (isset($_POST['Excluir'])) {
                         
-            $cd_aluno = filter_input(INPUT_POST, 'cd_aluno', FILTER_SANITIZE_NUMBER_INT);
+            $cd_aluno = $_POST['cd_aluno'];
+
+            if (!is_int($cd_aluno)) {
+            	header('Location: ../formulario/index.php');
+            	die();
+            }
                         
             $aluno->setAluno($cd_aluno);
                         
             if ($aluno->Delete()) {
             	header('Location: ../formulario/index.php');
+            	die();
             } else {
             	echo "Erro.";
             	echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
+            	die();
             }
-
         } else {
             echo "Erro, refaça a operação";
             echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
+            die();
         }
 	?>
 </body>

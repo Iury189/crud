@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
 	<title> INSERT | POO </title>
 </head>
 <body>
@@ -12,22 +11,29 @@
 
         if (isset($_POST['Cadastrar'])) {
                         
-            $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-            $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
+            $nome = $_POST['nome'];
+            $endereco = $_POST['endereco'];
+
+            if ((!is_string($nome)) || (!is_string($endereco))) {
+            	header('Location: ../formulario/index.php');
+            	die();
+            }
                         
             $aluno->setNome($nome);
             $aluno->setEndereco($endereco);
                         
         	if ($aluno->Insert()) {
             	header('Location: ../formulario/index.php');
+            	die();
             } else {
             	echo "Erro.";
             	echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
+            	die();
             }
-
         } else {
             echo "Erro, refaça a operação";
             echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
+            die();
         }
 	?>
 </body>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
 	<title> UPDATE | POO </title>
 </head>
 <body>
@@ -12,9 +11,14 @@
 
         if (isset($_POST['Atualizar'])) {
             
-            $cd_aluno = filter_input(INPUT_POST, 'cd_aluno', FILTER_SANITIZE_NUMBER_INT);        
-            $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-            $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
+            $cd_aluno = $_POST['cd_aluno'];           
+            $nome = $_POST['nome'];
+            $endereco = $_POST['endereco'];
+
+            if ((!is_int($cd_aluno)) || (!is_string($nome)) || (!is_string($endereco))) {
+            	header('Location: ../formulario/index.php');
+            	die();
+            }
             
             $aluno->setAluno($cd_aluno);            
             $aluno->setNome($nome);
@@ -22,14 +26,16 @@
                         
             if ($aluno->Update()) {
             	header('Location: ../formulario/index.php');
+            	die();
             } else {
             	echo "Erro.";
             	echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
+            	die();
             }
-
         } else {
             echo "Erro, refaça a operação";
             echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
+            die();
         }
 	?>
 </body>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title> CRUD POO </title>
+	<title> POO CRUD </title>
 	<script type="text/javascript" src="/crud/json/requisicao_aluno.js"></script>
 </head>
 <body>
