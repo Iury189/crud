@@ -15,7 +15,7 @@
             $nome = $_POST['nome'];
             $endereco = $_POST['endereco'];
 
-            if ((!is_int($cd_aluno)) || (!is_string($nome)) || (!is_string($endereco))) {
+            if ( (!is_int($cd_aluno)) || (!is_string($nome)) || (!is_string($endereco)) ) {
             	header('Location: ../formulario/index.php');
             	die();
             }
@@ -32,6 +32,7 @@
             	echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
             	die();
             }
+            
         } else {
             echo "Erro, refaça a operação";
             echo '<p><a href="../formulario/index.php"><button>Refazer operação</button></a></p>';
